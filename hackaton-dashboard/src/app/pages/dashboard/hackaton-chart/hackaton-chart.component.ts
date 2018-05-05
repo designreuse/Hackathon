@@ -175,8 +175,12 @@ export class HackatonChartComponent implements OnDestroy {
 
   update(){
     console.log("Updated");
-    this.chartService.updateChart(this.ainput);
-    this.reloadChart();   
+    this.chartService.updateChart(this.ainput).subscribe(
+      (data) => {
+        this.reloadChart();
+      }
+   );
+    
 
   }
 

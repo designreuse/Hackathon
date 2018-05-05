@@ -21,14 +21,9 @@ export class ChartService  {
         console.log("Start updating...")
         let url = this.endpoint + '/chart/update';
         console.log(url);
-        let result;
-        this.http.post(url, JSON.stringify(ainput)).subscribe(
-            (data) => {
-                result=data;
-                console.log(data)
-            }
-        );
-        return result;
+
+        return this.http.post(url, JSON.stringify(ainput));
+
     }
 
 
