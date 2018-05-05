@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { ChartService } from '../../../shared/services/chart.service';
 
 @Component({
   selector: 'hackaton-chart',
@@ -14,24 +15,35 @@ export class HackatonChartComponent implements OnDestroy {
   options: any;
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
+  datapoints = [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()];
+  labels = ['January', 'February', 'March', 'April', 'May', 'June'];
+
+  constructor(private theme: NbThemeService, private chartService:ChartService) {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;
 
+      this.chartService.getData().subscribe(
+        (dataload)=> {
+            console.log(dataload);
+       
+        },
+        (err) => console.log("ERROR to get data: " + JSON.stringify(err))
+    );
+
       this.data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        labels: this.labels,
         datasets: [{
           label: 'dataset - big points',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
+          data: this.datapoints,
           borderColor: colors.primary,
           backgroundColor: colors.primary,
           fill: false,
           borderDash: [5, 5],
           pointRadius: 8,
           pointHoverRadius: 10,
-        }, {
+        }/*, {
           label: 'dataset - individual point sizes',
           data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
           borderColor: colors.dangerLight,
@@ -56,7 +68,7 @@ export class HackatonChartComponent implements OnDestroy {
           fill: false,
           pointRadius: 8,
           pointHoverRadius: 10,
-        }],
+        }*/],
       };
 
       this.options = {

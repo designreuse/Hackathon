@@ -161,6 +161,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Reset Password',
         link: '/auth/reset-password',
       },
+      {
+        title: 'Test',
+        link: '/auth/reset-password',
+      },
     ],
   },
 ];
