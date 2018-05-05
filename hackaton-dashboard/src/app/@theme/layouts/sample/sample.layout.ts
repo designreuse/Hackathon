@@ -24,7 +24,7 @@ import 'rxjs/add/operator/delay';
         <ngx-header [position]="sidebar.id === 'left' ? 'normal': 'inverse'"></ngx-header>
       </nb-layout-header> -->
 
-      <nb-sidebar class="menu-sidebar"
+      <!-- <nb-sidebar class="menu-sidebar"
                    tag="menu-sidebar"
                    responsive
                    [right]="sidebar.id === 'right'">
@@ -34,7 +34,7 @@ import 'rxjs/add/operator/delay';
           </a>
         </nb-sidebar-header>
         <ng-content select="nb-menu"></ng-content>
-      </nb-sidebar>
+      </nb-sidebar> -->
 
       <nb-layout-column class="main-content">
         <ng-content select="router-outlet"></ng-content>

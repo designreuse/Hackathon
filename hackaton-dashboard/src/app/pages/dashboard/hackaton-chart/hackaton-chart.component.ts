@@ -36,7 +36,9 @@ export class HackatonChartComponent implements OnDestroy {
     this.ainput.icostu=0;
     this.ainput.iastock=0;
 
-    this.createChart();
+    this.reloadChart();
+
+    //this.createChart();
 
   }
 
@@ -137,42 +139,41 @@ export class HackatonChartComponent implements OnDestroy {
 
   }
 
+  reloadChart(){
+
+    this.chartService.getData().subscribe(
+      (dataload :any)=> {
+        this.labels=dataload.labels;
+        this.datapoints=dataload.data;
+          console.log(dataload);
+          this.createChart();
+     
+      },
+      (error) => {
+        if (error.status === 200) {
+          // return obs that completes;
+          console.log("Process ok: " +JSON.stringify(error));
+          var labels1 = error.error.text.labels;
+          var datapoints1 = error.error.text.data;
+          console.log("Datapoints: "+JSON.stringify(labels1));
+          console.log("Datapoints: "+JSON.stringify(datapoints1));
+          this.createChart();
+        
+       
+      } else {
+        console.log("ERROR to get data: " + JSON.stringify(error));
+      }
+    }
+  );
+
+
+  }
+
   update(){
     console.log("Updated");
     // console.log(JSON.stringify(this.ainput));
-    this.chartService.updateChart(this.ainput);
-    this.chartService.getData().subscribe(
-      (dataload)=> {
-          console.log(dataload);
-     
-      },
-      (err) => console.log("ERROR to get data: " + JSON.stringify(err))
-  );
-  this.chartService.getData().subscribe(
-    (dataload :any)=> {
-      this.labels=dataload.labels;
-      this.datapoints=dataload.data;
-        console.log(dataload);
-        this.createChart();
-   
-    },
-    (error) => {
-      if (error.status === 200) {
-        // return obs that completes;
-        console.log("Process ok: " +JSON.stringify(error));
-        var labels1 = error.error.text.labels;
-        var datapoints1 = error.error.text.data;
-        console.log("Datapoints: "+JSON.stringify(labels1));
-        console.log("Datapoints: "+JSON.stringify(datapoints1));
-        this.createChart();
-      
-     
-    } else {
-      console.log("ERROR to get data: " + JSON.stringify(error));
-    }
-  }
-);
-   
+    this.chartService.updateChart(this.ainput).subscribe;
+    this.reloadChart();   
 
   }
 
