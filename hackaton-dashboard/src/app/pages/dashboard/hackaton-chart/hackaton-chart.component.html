@@ -9,9 +9,9 @@
             <nb-card-body>
                 <div class="form-group">
                     <button class="btn btn-demo" (click)="update()">Update</button>
-                    <input type="number" placeholder="Margin" class="form-control" />
-                    <input type="number" placeholder="Available Units" class="form-control" />
-                    <input type="number" placeholder="Cost Per Unit" class="form-control" />
+                    <input type="number" placeholder="Margin" class="form-control" [(ngModel)]="ainput.imargin"/>
+                    <input type="number" placeholder="Available Units" class="form-control" [(ngModel)]="ainput.icostu" />
+                    <input type="number" placeholder="Cost Per Unit" class="form-control" [(ngModel)]="ainput.iastock" />
                 </div>
             </nb-card-body>
         </nb-card>

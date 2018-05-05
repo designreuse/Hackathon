@@ -15,11 +15,11 @@ export class HackatonChartComponent implements OnDestroy {
   themeSubscription: any;
 
   // Inputs
-  //imargin: Number;
-  //icostu:Number;
-  //iastock: Number;
+  //imargin = 0;
+  //icostu= 0;
+  //iastock = 0;
 
-  // ainput: AlgorithmInput;
+  ainput: AlgorithmInput = new AlgorithmInput;
 
   // Business Indicators
   //btotrev: Number;
@@ -30,10 +30,11 @@ export class HackatonChartComponent implements OnDestroy {
   labels = ['January', 'February', 'March', 'April', 'May', 'June'];
 
   constructor(private theme: NbThemeService, private chartService:ChartService) {
- 
-    //this.ainput.imargin=0;
-    //this.ainput.icostu=0;
-    //this.ainput.iastock=0;
+    
+
+    this.ainput.imargin=0;
+    this.ainput.icostu=0;
+    this.ainput.iastock=0;
 
     this.createChart();
 
@@ -139,7 +140,7 @@ export class HackatonChartComponent implements OnDestroy {
   update(){
     console.log("Updated");
     // console.log(JSON.stringify(this.ainput));
-
+    this.chartService.updateChart(this.ainput);
     this.chartService.getData().subscribe(
       (dataload)=> {
           console.log(dataload);

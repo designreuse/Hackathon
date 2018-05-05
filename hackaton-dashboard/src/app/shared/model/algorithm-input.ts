@@ -1,8 +1,8 @@
 
 export class AlgorithmInput{
 
-    //imargin: Number;
-    icostu: Number;
-    iastock: Number;
+    imargin= 0;
+    icostu = 0;
+    iastock= 0;
 
 }
