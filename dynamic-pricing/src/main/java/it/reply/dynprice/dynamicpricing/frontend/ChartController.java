@@ -10,7 +10,7 @@ public class ChartController {
 	@RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
 	public String test() {
 		
-		return "{test}";
+		return "{test:test}";
 		
 	}
 
