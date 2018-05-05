@@ -10,7 +10,7 @@ public class ChartController {
 	@RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
 	public String test() {
 		
-		return "{test:test}";
+		return "{labels:[\'January\', \'February\', \'March\', \'April\', \'May\', \'June\'],data:[66,95,46,34,88,67]}";
 		
 	}
 
