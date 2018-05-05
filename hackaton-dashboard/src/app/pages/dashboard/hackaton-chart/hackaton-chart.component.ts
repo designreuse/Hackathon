@@ -32,9 +32,11 @@ export class HackatonChartComponent implements OnDestroy {
   constructor(private theme: NbThemeService, private chartService:ChartService) {
     
 
-    this.ainput.imargin=0;
-    this.ainput.icostu=0;
-    this.ainput.iastock=0;
+    this.ainput.imargin=0.1;
+    this.ainput.icostu=200;
+    this.ainput.iastock=150;
+    this.ainput.iopcos=70000;
+    this.ainput.iincos=300000;
 
     this.btotrev = 0;
 
@@ -54,7 +56,7 @@ export class HackatonChartComponent implements OnDestroy {
       this.data = {
         labels: this.labels,
         datasets: [{
-          label: 'dataset - big points',
+          label: 'Optimised Price',
           data: this.datapoints,
           borderColor: colors.primary,
           backgroundColor: colors.primary,
@@ -108,7 +110,7 @@ export class HackatonChartComponent implements OnDestroy {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Month',
+                labelString: 'Timestamp',
               },
               gridLines: {
                 display: true,
@@ -124,7 +126,7 @@ export class HackatonChartComponent implements OnDestroy {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Value',
+                labelString: 'Price',
               },
               gridLines: {
                 display: true,

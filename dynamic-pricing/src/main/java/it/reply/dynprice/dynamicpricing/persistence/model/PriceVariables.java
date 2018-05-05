@@ -18,8 +18,8 @@ public class PriceVariables {
     private double margin;                    // margin to add to the costs 								(input)
     private double price;                    // selling price 											(calculated: costs_total_unit * (1 + margin))
 
-    private double costs_op = 70000;            // total operational costs of the company 					(input)
-    private double costs_dir = 300000;        // total direct production costs 							(input)
+    private double costs_op;            // total operational costs of the company 					(input)
+    private double costs_dir;        // total direct production costs 							(input)
     private double costs_op_to_dir;    // share of operational costs per 1€ of production costs 	(calculated: costs_op / costs_dir)
 
     /*

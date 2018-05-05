@@ -9,9 +9,49 @@
             <nb-card-body>
                 <div class="form-group">
                     <button class="btn btn-demo" (click)="update()">Update</button>
-                    <input type="number" placeholder="Margin" class="form-control" [(ngModel)]="ainput.imargin"/>
-                    <input type="number" placeholder="Available Units" class="form-control" [(ngModel)]="ainput.icostu" />
-                    <input type="number" placeholder="Cost Per Unit" class="form-control" [(ngModel)]="ainput.iastock" />
+                    <div class="row">
+                        <div class="col">
+                            <label>Margin</label>
+                        </div>
+                        <div class="col">
+                            <input type="number" placeholder="Margin" class="form-control" [(ngModel)]="ainput.imargin" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>Available Units</label>
+                        </div>
+                        <div class="col">
+                            <input type="number" placeholder="Available Units" class="form-control" [(ngModel)]="ainput.icostu" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>Cost Per Unit</label>
+                        </div>
+                        <div class="col">
+                            <input type="number" placeholder="Cost Per Unit" class="form-control" [(ngModel)]="ainput.iastock" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                            <div class="col">
+                                <label>Operational Costs</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" placeholder="Operational Costs" class="form-control" [(ngModel)]="ainput.iopcos" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                                <div class="col">
+                                    <label>Indirect Costs</label>
+                                </div>
+                                <div class="col">
+                                    <input type="number" placeholder="Indirect Costs" class="form-control" [(ngModel)]="ainput.iincos" />
+                                </div>
+                            </div>
+
                 </div>
             </nb-card-body>
         </nb-card>

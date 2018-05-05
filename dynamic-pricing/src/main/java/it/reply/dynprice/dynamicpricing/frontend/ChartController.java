@@ -2,6 +2,8 @@ package it.reply.dynprice.dynamicpricing.frontend;
 
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +43,7 @@ public class ChartController {
 	public String test() {
 		
 		List<PriceEntity> priceDataList = this.priceDao.findAll();
+		DateFormat df = new SimpleDateFormat("MMM dd HH:mm");
 		
 		ChartData dummyChartData = new ChartData();
 		
@@ -52,7 +55,7 @@ public class ChartController {
 		for(PriceEntity priceEntity : priceDataList) {
 			
 			dataList.add(priceEntity.getPrice());
-			labelsList.add(priceEntity.getUpdated().toString());			
+			labelsList.add(df.format(priceEntity.getUpdated()));			
 		}
 		
 		String[] labelsArr = new String[labelsList.size()];
@@ -78,6 +81,8 @@ public class ChartController {
 		logger.info(body);
 		
 		Gson gson = new Gson(); 
+	
+		
 		
 		AlgorithmInputData inputData = gson.fromJson(body, AlgorithmInputData.class);
 		
@@ -86,6 +91,8 @@ public class ChartController {
 		priceVariables.setMargin(inputData.getImargin());
 		priceVariables.setCosts_dir_unit(inputData.getIcostu());
 		priceVariables.setQnt_prod(inputData.getIastock());
+		priceVariables.setCosts_dir(inputData.getIincos());
+		priceVariables.setCosts_op(inputData.getIopcos());
 		
 		this.priceCalcController.calc_main(priceVariables);
 		
