@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 
+import it.reply.dynprice.dynamicpricing.controller.PriceCalcController;
 import it.reply.dynprice.dynamicpricing.persistence.dao.PriceDao;
 import it.reply.dynprice.dynamicpricing.persistence.model.PriceEntity;
+import it.reply.dynprice.dynamicpricing.persistence.model.PriceVariables;
+
+
 
 
 
@@ -29,6 +33,9 @@ public class ChartController {
 	
 	@Autowired
 	private PriceDao priceDao;
+	
+	@Autowired
+	PriceCalcController priceCalcController;
 	
 	@RequestMapping(value = "/chart/data", method = RequestMethod.GET, produces = "application/json")
 	public String test() {
@@ -69,6 +76,18 @@ public class ChartController {
 	public void update(@RequestBody String body) {
 		
 		logger.info(body);
+		
+		Gson gson = new Gson(); 
+		
+		AlgorithmInputData inputData = gson.fromJson(body, AlgorithmInputData.class);
+		
+		PriceVariables priceVariables = new PriceVariables();
+		
+		priceVariables.setMargin(inputData.getImargin());
+		priceVariables.setCosts_dir_unit(inputData.getIcostu());
+		priceVariables.setQnt_prod(inputData.getIastock());
+		
+		this.priceCalcController.calc_main(priceVariables);
 		
 		//ChartData dummyChartData = new ChartData();
 		

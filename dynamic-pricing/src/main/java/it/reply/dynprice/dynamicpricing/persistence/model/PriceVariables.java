@@ -18,9 +18,9 @@ public class PriceVariables {
     private double margin;                    // margin to add to the costs 								(input)
     private double price;                    // selling price 											(calculated: costs_total_unit * (1 + margin))
 
-    private static double costs_op;            // total operational costs of the company 					(input)
-    private static double costs_dir;        // total direct production costs 							(calculated: sum(PriceO_instances.costs_dir_all))
-    private static double costs_op_to_dir;    // share of operational costs per 1€ of production costs 	(calculated: costs_op / costs_dir)
+    private double costs_op = 70000;            // total operational costs of the company 					(input)
+    private double costs_dir = 300000;        // total direct production costs 							(input)
+    private double costs_op_to_dir;    // share of operational costs per 1€ of production costs 	(calculated: costs_op / costs_dir)
 
     /*
      * We got to think of the time frames:
@@ -102,28 +102,28 @@ public class PriceVariables {
         this.price = price;
     }
 
-    public static double getCosts_op() {
+    public double getCosts_op() {
         return costs_op;
     }
 
-    public static void setCosts_op(double costs_op) {
-        PriceVariables.costs_op = costs_op;
+    public void setCosts_op(double costs_op) {
+    	this.costs_op = costs_op;
     }
 
-    public static double getCosts_dir() {
+    public double getCosts_dir() {
         return costs_dir;
     }
 
-    public static void setCosts_dir(double costs_dir) {
-        PriceVariables.costs_dir = costs_dir;
+    public void setCosts_dir(double costs_dir) {
+        this.costs_dir = costs_dir;
     }
 
-    public static double getCosts_op_to_dir() {
+    public double getCosts_op_to_dir() {
         return costs_op_to_dir;
     }
 
-    public static void setCosts_op_to_dir(double costs_op_to_dir) {
-        PriceVariables.costs_op_to_dir = costs_op_to_dir;
+    public void setCosts_op_to_dir(double costs_op_to_dir) {
+    	this.costs_op_to_dir = costs_op_to_dir;
     }
 
     public void setId(Long id) {

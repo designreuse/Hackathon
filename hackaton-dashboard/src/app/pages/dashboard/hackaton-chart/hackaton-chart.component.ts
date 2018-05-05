@@ -22,9 +22,9 @@ export class HackatonChartComponent implements OnDestroy {
   ainput: AlgorithmInput = new AlgorithmInput;
 
   // Business Indicators
-  //btotrev: Number;
-  //bprou: Number;
-  //boptmar: Number;
+  btotrev=0;
+  bprou=0;
+  boptmar=0;
 
   datapoints = [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()];
   labels = ['January', 'February', 'March', 'April', 'May', 'June'];
@@ -36,8 +36,10 @@ export class HackatonChartComponent implements OnDestroy {
     this.ainput.icostu=0;
     this.ainput.iastock=0;
 
-    this.reloadChart();
+    this.btotrev = 0;
 
+    this.reloadChart();
+    
     //this.createChart();
 
   }
@@ -171,8 +173,7 @@ export class HackatonChartComponent implements OnDestroy {
 
   update(){
     console.log("Updated");
-    // console.log(JSON.stringify(this.ainput));
-    this.chartService.updateChart(this.ainput).subscribe;
+    this.chartService.updateChart(this.ainput);
     this.reloadChart();   
 
   }

@@ -1,19 +1,21 @@
 package it.reply.dynprice.dynamicpricing.controller;
 
-import java.util.List;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.reply.dynprice.dynamicpricing.easynotes.repository.PriceODao;
+import it.reply.dynprice.dynamicpricing.persistence.dao.PriceDao;
+import it.reply.dynprice.dynamicpricing.persistence.model.PriceEntity;
 import it.reply.dynprice.dynamicpricing.persistence.model.PriceVariables;
 
 
 @Service
-class PriceCalcController {
+public class PriceCalcController {
 
+    
     @Autowired
-     PriceODao priceODao;
+    PriceDao priceDao;
 
 
     public double calc_CostsDirAll(double qnt_prod, double costs_dir_unit) {
@@ -36,13 +38,21 @@ class PriceCalcController {
         return costs_op / costs_total;//OP cost per Euro of Production
     }
 
-    public double calc_CostsDir() {
-        double temp_sum = 0;
-        List<PriceVariables> priceOList = priceODao.findAll();
-
-        for (PriceVariables i : priceOList) {
-            temp_sum += i.getCosts_dir_all();
-        }
-        return temp_sum;//Total Prod Cost
+    
+    public void calc_main(PriceVariables priceVariables) {
+    	priceVariables.setCosts_op_to_dir(this.calc_CostsOpToDir(priceVariables.getCosts_op(), priceVariables.getCosts_dir()));
+    	priceVariables.setCosts_dir_all(this.calc_CostsDirAll(priceVariables.getQnt_prod(), priceVariables.getCosts_dir_unit()));
+    	priceVariables.setCosts_op_unit(this.calc_CostsOpUnit(priceVariables.getCosts_op_to_dir(), priceVariables.getCosts_dir_unit()));
+    	priceVariables.setCosts_total_unit(this.calc_CostsTotalUnit(priceVariables.getCosts_dir_unit(), priceVariables.getCosts_op_unit()));
+    	priceVariables.setPrice(this.calc_Price(priceVariables.getCosts_total_unit(), priceVariables.getMargin()));
+    	
+    	PriceEntity pe = new PriceEntity();
+    	
+    	pe.setPrice(priceVariables.getPrice());
+    	pe.setUpdated(new Date());
+    	
+    	priceDao.save(pe);
+    	
     }
+    
 }
