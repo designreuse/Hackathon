@@ -1,4 +1,4 @@
-package com.example.easynotes.model;
+package it.reply.dynprice.dynamicpricing.java.com.example.easynotes.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;

@@ -1,9 +1,9 @@
-package com.example.easynotes.controller;
+package it.reply.dynprice.dynamicpricing.java.com.example.easynotes.controller;
 
 
-import com.example.easynotes.model.competion;
-import com.example.easynotes.repository.SparseComp;
-import com.example.easynotes.repository.amazon;
+import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.model.competion;
+import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.repository.SparseComp;
+import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.repository.amazon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

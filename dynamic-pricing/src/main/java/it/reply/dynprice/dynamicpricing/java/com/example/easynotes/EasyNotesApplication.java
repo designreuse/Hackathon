@@ -1,4 +1,4 @@
-package com.example.easynotes;
+package it.reply.dynprice.dynamicpricing.java.com.example.easynotes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

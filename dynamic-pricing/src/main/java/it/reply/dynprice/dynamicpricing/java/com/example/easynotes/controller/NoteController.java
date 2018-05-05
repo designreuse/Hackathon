@@ -1,10 +1,10 @@
-package com.example.easynotes.controller;
+package it.reply.dynprice.dynamicpricing.java.com.example.easynotes.controller;
 
-import com.example.easynotes.exception.ResourceNotFoundException;
-import com.example.easynotes.model.Note;
-import com.example.easynotes.model.PriceEnitity;
-import com.example.easynotes.repository.NoteRepository;
-import com.example.easynotes.repository.Product;
+import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.exception.ResourceNotFoundException;
+import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.model.Note;
+import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.model.PriceEnitity;
+import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.repository.NoteRepository;
+import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.repository.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-/**
- * Created by rajeevkumarsingh on 27/06/17.
- */
+
 @RestController
 @RequestMapping("/api")
 public class NoteController {

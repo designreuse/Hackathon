@@ -1,9 +1,9 @@
-package com.example.easynotes.controller;
+package it.reply.dynprice.dynamicpricing.java.com.example.easynotes.controller;
 
 import java.util.List;
 
-import com.example.easynotes.model.PriceVariables;
-import com.example.easynotes.repository.PriceODao;
+import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.model.PriceVariables;
+import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.repository.PriceODao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
