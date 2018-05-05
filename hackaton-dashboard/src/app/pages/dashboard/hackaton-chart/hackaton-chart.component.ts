@@ -1,13 +1,12 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { ChartService } from '../../../shared/services/chart.service';
+import { AlgorithmInput } from '../../../shared/model/algorithm-input';
 
 @Component({
   selector: 'hackaton-chart',
   styleUrls: ['./hackaton-chart.component.scss'],
-  template: `
-    <chart type="line" [data]="data" [options]="options"></chart>
-  `,
+  templateUrl: './hackaton-chart.component.html',
   
 })
 export class HackatonChartComponent implements OnDestroy {
@@ -15,22 +14,37 @@ export class HackatonChartComponent implements OnDestroy {
   options: any;
   themeSubscription: any;
 
+  // Inputs
+  //imargin: Number;
+  //icostu:Number;
+  //iastock: Number;
+
+  // ainput: AlgorithmInput;
+
+  // Business Indicators
+  //btotrev: Number;
+  //bprou: Number;
+  //boptmar: Number;
+
   datapoints = [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()];
   labels = ['January', 'February', 'March', 'April', 'May', 'June'];
 
   constructor(private theme: NbThemeService, private chartService:ChartService) {
+ 
+    //this.ainput.imargin=0;
+    //this.ainput.icostu=0;
+    //this.ainput.iastock=0;
+
+    this.createChart();
+
+  }
+
+  createChart(){
+
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;
-
-      this.chartService.getData().subscribe(
-        (dataload)=> {
-            console.log(dataload);
-       
-        },
-        (err) => console.log("ERROR to get data: " + JSON.stringify(err))
-    );
 
       this.data = {
         labels: this.labels,
@@ -119,6 +133,46 @@ export class HackatonChartComponent implements OnDestroy {
         },
       };
     });
+
+  }
+
+  update(){
+    console.log("Updated");
+    // console.log(JSON.stringify(this.ainput));
+
+    this.chartService.getData().subscribe(
+      (dataload)=> {
+          console.log(dataload);
+     
+      },
+      (err) => console.log("ERROR to get data: " + JSON.stringify(err))
+  );
+  this.chartService.getData().subscribe(
+    (dataload :any)=> {
+      this.labels=dataload.labels;
+      this.datapoints=dataload.data;
+        console.log(dataload);
+        this.createChart();
+   
+    },
+    (error) => {
+      if (error.status === 200) {
+        // return obs that completes;
+        console.log("Process ok: " +JSON.stringify(error));
+        var labels1 = error.error.text.labels;
+        var datapoints1 = error.error.text.data;
+        console.log("Datapoints: "+JSON.stringify(labels1));
+        console.log("Datapoints: "+JSON.stringify(datapoints1));
+        this.createChart();
+      
+     
+    } else {
+      console.log("ERROR to get data: " + JSON.stringify(error));
+    }
+  }
+);
+   
+
   }
 
   ngOnDestroy(): void {

@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-lg-8">
+        <chart type="line" [data]="data" [options]="options"></chart>
+    </div>
+    <div class="col-lg-4">
+
+        <nb-card>
+            <nb-card-header>Input</nb-card-header>
+            <nb-card-body>
+                <div class="form-group">
+                    <button class="btn btn-demo" (click)="update()">Update</button>
+                    <input type="number" placeholder="Margin" class="form-control" />
+                    <input type="number" placeholder="Available Units" class="form-control" />
+                    <input type="number" placeholder="Cost Per Unit" class="form-control" />
+                </div>
+            </nb-card-body>
+        </nb-card>
+        <nb-card>
+            <nb-card-header>Business Indicators</nb-card-header>
+            <nb-card-body>
+                <div class="row">
+                    <div class="col">
+                        <label>Total Revenue</label>
+                    </div>
+                    <div class="col">
+                        <input type="number" placeholder="Total Revenue" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Profit/Unit</label>
+                    </div>
+                    <div class="col">
+                        <input type="number" placeholder="Profit Per Unit" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Opt Margin</label>
+                    </div>
+                    <div class="col">
+                        <input type="number" placeholder="Optmised Margin" class="form-control" />
+
+                    </div>
+                </div>
+
+
+
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
