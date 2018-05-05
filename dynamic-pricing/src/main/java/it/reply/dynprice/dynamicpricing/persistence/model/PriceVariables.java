@@ -9,19 +9,24 @@ public class PriceVariables {
 
 
     private Long id;                        // product ID 												(input / generated ???)
-    private String prod_name;                // product name 											(input)
+    private String prod_name;               // product name 											(input)
     private double qnt_prod;                // quantity of units produced of this item 					(input)
-    private double costs_dir_unit;            // direct production costs of one single unit of this item 	(input)
-    private double costs_dir_all;            // total direct production costs of all units of this item 	(calculated: qnt_prod * costs_dir_unit)
-    private double costs_op_unit;            // share of operational costs broken down for one unit 		(calculated: costs_op_to_dir * costs_dir_unit)
+    private double costs_dir_unit;          // direct production costs of one single unit of this item 	(input)
+    private double costs_dir_all;           // total direct production costs of all units of this item 	(calculated: qnt_prod * costs_dir_unit)
+    private double costs_op_unit;           // share of operational costs broken down for one unit 		(calculated: costs_op_to_dir * costs_dir_unit)
     private double costs_total_unit;        // total costs of one unit 									(calculated: costs_dir_unit + costs_op_unit)
-    private double margin;                    // margin to add to the costs 								(input)
-    private double price;                    // selling price 											(calculated: costs_total_unit * (1 + margin))
+    private double margin;                  // margin to add to the costs 								(input)
+    private double price;                   // selling price 											(calculated: costs_total_unit * (1 + margin))
 
-    private double costs_op = 70000;            // total operational costs of the company 					(input)
-    private double costs_dir = 300000;        // total direct production costs 							(input)
-    private double costs_op_to_dir;    // share of operational costs per 1€ of production costs 	(calculated: costs_op / costs_dir)
+    private double costs_op = 70000;        // total operational costs of the company 					(input)
+    private double costs_dir = 300000;      // total direct production costs 							(input)
+    private double total_profit = 40000;	// total profit of a company								(input)
+    private double costs_op_to_dir;    		// share of operational costs per 1€ of production costs 	(calculated: costs_op / costs_dir)
 
+    private double total_revenue;			// Business Indicator										(calculated: qnt_prod * price)
+    private double profit_per_unit;			// Business Indicator										(calculated: price - costs_total_unit)
+    private double fraction_of_profit;		// Business Indicator										(calculated: profit_per_unit * qnt_prod / total_profit)
+    
     /*
      * We got to think of the time frames:
      *
@@ -38,7 +43,43 @@ public class PriceVariables {
         return this.id;
     }
 
-    public String getProd_name() {
+    public double getTotal_profit() {
+		return total_profit;
+	}
+
+	public void setTotal_profit(double total_profit) {
+		this.total_profit = total_profit;
+	}
+
+	public double getTotal_revenue() {
+		return total_revenue;
+	}
+
+	public void setTotal_revenue(double total_revenue) {
+		this.total_revenue = total_revenue;
+	}
+
+	public double getProfit_per_unit() {
+		return profit_per_unit;
+	}
+
+	public void setProfit_per_unit(double profit_per_unit) {
+		this.profit_per_unit = profit_per_unit;
+	}
+
+	public double getFraction_of_profit() {
+		return fraction_of_profit;
+	}
+
+	public void setFraction_of_profit(double fraction_of_profit) {
+		this.fraction_of_profit = fraction_of_profit;
+	}
+
+	public void setQnt_prod(double qnt_prod) {
+		this.qnt_prod = qnt_prod;
+	}
+
+	public String getProd_name() {
         return prod_name;
     }
 
