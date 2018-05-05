@@ -1,6 +1,7 @@
 package it.reply.dynprice.dynamicpricing.controller;
 
 import java.util.Date;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,8 @@ public class PriceCalcController {
     @Autowired
     PriceDao priceDao;
 
-
+    Date Test;
+    
     public double calc_CostsDirAll(double qnt_prod, double costs_dir_unit) {
         return qnt_prod * costs_dir_unit;//Total Pro Cost of Item
     }
@@ -50,6 +52,27 @@ public class PriceCalcController {
         return profit_per_unit * qnt_prod / total_profit;//Profit compared to total profit of company
     }
     
+    public void calc_Comp(PriceVariables amazon, PriceVariables alibaba, PriceVariables unieuro) {
+    	amazon.setPrice(amazon.getPrice()*(0.95 + Math.random() * 0.1));
+    	alibaba.setPrice(alibaba.getPrice()*(0.95 + Math.random() * 0.1));
+    	unieuro.setPrice(unieuro.getPrice()*(0.95 + Math.random() * 0.1));
+    	
+    	PriceEntity am = new PriceEntity();
+    	am.setPrice(amazon.getPrice());
+    	am.setUpdated(Test);
+    	priceDao.save(am);
+
+    	PriceEntity al = new PriceEntity();
+    	al.setPrice(alibaba.getPrice());
+    	al.setUpdated(Test);
+    	priceDao.save(al);
+    	
+    	PriceEntity un = new PriceEntity();
+    	un.setPrice(unieuro.getPrice());
+    	un.setUpdated(Test);
+    	priceDao.save(un);
+    }
+    
     
     public void calc_main(PriceVariables priceVariables) {
     	priceVariables.setCosts_op_to_dir(this.calc_CostsOpToDir(priceVariables.getCosts_op(), priceVariables.getCosts_dir()));
@@ -61,11 +84,11 @@ public class PriceCalcController {
     	priceVariables.setProfit_per_unit(this.calc_ProfitPerUnit(priceVariables.getPrice(), priceVariables.getCosts_total_unit()));
     	priceVariables.setFraction_of_profit(this.calc_FractionOfProfit(priceVariables.getProfit_per_unit(), priceVariables.getQnt_prod(), priceVariables.getTotal_profit()));
     	
-    	
     	PriceEntity pe = new PriceEntity();
     	
     	pe.setPrice(priceVariables.getPrice());
-    	pe.setUpdated(new Date());
+    	Test = new Date();
+    	pe.setUpdated(Test);
     	
     	pe.setProfit_per_unit(priceVariables.getProfit_per_unit());
     	pe.setTotal_revenue(priceVariables.getTotal_revenue());
