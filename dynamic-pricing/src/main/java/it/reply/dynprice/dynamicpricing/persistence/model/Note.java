@@ -1,4 +1,4 @@
-package it.reply.dynprice.dynamicpricing.java.com.example.easynotes.model;
+package it.reply.dynprice.dynamicpricing.persistence.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;

@@ -1,4 +1,4 @@
-package com.example.easynotes.repository;
+package it.reply.dynprice.dynamicpricing.easynotes.repository;
 
 import java.util.Date;
 

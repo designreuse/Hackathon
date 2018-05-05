@@ -1,13 +1,14 @@
-package it.reply.dynprice.dynamicpricing.java.com.example.easynotes.controller;
+package it.reply.dynprice.dynamicpricing.controller;
 
-import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.exception.ResourceNotFoundException;
-import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.model.Note;
-import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.model.PriceEnitity;
-import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.repository.NoteRepository;
-import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.repository.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import it.reply.dynprice.dynamicpricing.easynotes.exception.ResourceNotFoundException;
+import it.reply.dynprice.dynamicpricing.easynotes.repository.NoteRepository;
+import it.reply.dynprice.dynamicpricing.easynotes.repository.Product;
+import it.reply.dynprice.dynamicpricing.persistence.model.Note;
+import it.reply.dynprice.dynamicpricing.persistence.model.PriceEnitity;
 
 import javax.validation.Valid;
 import java.util.List;

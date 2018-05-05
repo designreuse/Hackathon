@@ -1,11 +1,12 @@
-package com.example.easynotes.repository;
+package it.reply.dynprice.dynamicpricing.easynotes.repository;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import com.example.easynotes.model.PriceVariables;
 import org.springframework.data.repository.CrudRepository;
+
+import it.reply.dynprice.dynamicpricing.persistence.model.PriceVariables;
 
 
 

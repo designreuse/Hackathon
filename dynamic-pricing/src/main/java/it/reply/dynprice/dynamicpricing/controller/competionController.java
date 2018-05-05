@@ -1,13 +1,14 @@
-package it.reply.dynprice.dynamicpricing.java.com.example.easynotes.controller;
+package it.reply.dynprice.dynamicpricing.controller;
 
 
-import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.model.competion;
-import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.repository.SparseComp;
-import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.repository.amazon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import it.reply.dynprice.dynamicpricing.easynotes.repository.SparseComp;
+import it.reply.dynprice.dynamicpricing.easynotes.repository.amazon;
+import it.reply.dynprice.dynamicpricing.persistence.model.competion;
 
 import java.util.ArrayList;
 import java.util.Date;

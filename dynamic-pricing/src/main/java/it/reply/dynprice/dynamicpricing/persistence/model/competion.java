@@ -1,15 +1,14 @@
-package it.reply.dynprice.dynamicpricing.java.com.example.easynotes.model;
+package it.reply.dynprice.dynamicpricing.persistence.model;
 
 
-        import java.util.Date;
-
-        import javax.persistence.Entity;
-        import javax.persistence.GeneratedValue;
-        import javax.persistence.GenerationType;
-        import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
-public class PriceEnitity {
+public class competion {
 
     private Long id;
     private Double price;

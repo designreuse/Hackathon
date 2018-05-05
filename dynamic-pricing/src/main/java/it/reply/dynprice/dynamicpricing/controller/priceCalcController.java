@@ -1,11 +1,12 @@
-package it.reply.dynprice.dynamicpricing.java.com.example.easynotes.controller;
+package it.reply.dynprice.dynamicpricing.controller;
 
 import java.util.List;
 
-import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.model.PriceVariables;
-import it.reply.dynprice.dynamicpricing.java.com.example.easynotes.repository.PriceODao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import it.reply.dynprice.dynamicpricing.easynotes.repository.PriceODao;
+import it.reply.dynprice.dynamicpricing.persistence.model.PriceVariables;
 
 
 @Service

@@ -1,9 +1,9 @@
-package com.example.easynotes.repository;
+package it.reply.dynprice.dynamicpricing.easynotes.repository;
 
-import com.example.easynotes.model.PriceEnitity;
-import com.example.easynotes.model.competion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import it.reply.dynprice.dynamicpricing.persistence.model.competion;
 
 /**
  * Created by rajeevkumarsingh on 27/06/17.
