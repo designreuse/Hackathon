@@ -20,9 +20,9 @@ import 'rxjs/add/operator/delay';
   styleUrls: ['./sample.layout.scss'],
   template: `
     <nb-layout [center]="layout.id === 'center-column'" windowMode>
-      <nb-layout-header fixed>
+      <!-- <nb-layout-header fixed>
         <ngx-header [position]="sidebar.id === 'left' ? 'normal': 'inverse'"></ngx-header>
-      </nb-layout-header>
+      </nb-layout-header> -->
 
       <nb-sidebar class="menu-sidebar"
                    tag="menu-sidebar"
@@ -48,9 +48,9 @@ import 'rxjs/add/operator/delay';
         <nb-menu [items]="subMenu"></nb-menu>
       </nb-layout-column>
 
-      <nb-layout-footer fixed>
+     <!-- <nb-layout-footer fixed>
         <ngx-footer></ngx-footer>
-      </nb-layout-footer>
+      </nb-layout-footer> -->
 
       <nb-sidebar class="settings-sidebar"
                    tag="settings-sidebar"
