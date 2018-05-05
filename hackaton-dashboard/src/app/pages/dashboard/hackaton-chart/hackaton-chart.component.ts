@@ -32,8 +32,8 @@ export class HackatonChartComponent implements OnDestroy {
   constructor(private theme: NbThemeService, private chartService:ChartService) {
     
 
-    this.ainput.imargin=0.1;
-    this.ainput.icostu=200;
+    this.ainput.imargin=0.3;
+    this.ainput.icostu=230;
     this.ainput.iastock=150;
     this.ainput.iopcos=70000;
     this.ainput.iincos=300000;
@@ -64,7 +64,7 @@ export class HackatonChartComponent implements OnDestroy {
           borderDash: [5, 5],
           pointRadius: 8,
           pointHoverRadius: 10,
-        }, {
+        }/*, {
           label: 'dataset - individual point sizes',
           data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
           borderColor: colors.dangerLight,
@@ -73,7 +73,7 @@ export class HackatonChartComponent implements OnDestroy {
           borderDash: [5, 5],
           pointRadius: 0,
           pointHoverRadius: 10,
-        }/*, {
+        }, {
           label: 'dataset - large pointHoverRadius',
           data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
           borderColor: colors.info,
