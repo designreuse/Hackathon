@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.reply.dynprice.dynamicpricing.persistence.dao.PriceODao;
+import it.reply.dynprice.dynamicpricing.easynotes.repository.PriceODao;
 
 @Service
 public class PriceCalc {
@@ -35,9 +35,9 @@ public class PriceCalc {
 	
 	public double calc_CostsDir() {
 		double temp_sum = 0;
-		List<PriceO> priceOList = priceODao.findAll();
+		List<PriceVariables> priceOList = priceODao.findAll();
 		
-		for (PriceO i : priceOList) {
+		for (PriceVariables i : priceOList) {
 			temp_sum += i.getCosts_dir_all();
 		}
 		return temp_sum;//Total Prod Cost
