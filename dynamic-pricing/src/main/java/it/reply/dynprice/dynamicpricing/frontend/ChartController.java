@@ -52,10 +52,15 @@ public class ChartController {
 		List<Double> dataList = new ArrayList<Double>();
 		List<String> labelsList = new ArrayList<String>();
 		
+		
 		for(PriceEntity priceEntity : priceDataList) {
 			
 			dataList.add(priceEntity.getPrice());
-			labelsList.add(df.format(priceEntity.getUpdated()));			
+			labelsList.add(df.format(priceEntity.getUpdated()));
+			
+			dummyChartData.setTotal_revenue(null==priceEntity.getTotal_revenue()?0.0:priceEntity.getTotal_revenue());
+			dummyChartData.setProfit_per_unit(null==priceEntity.getProfit_per_unit()?0.0:priceEntity.getProfit_per_unit());
+			dummyChartData.setFraction_of_profit(null==priceEntity.getFraction_of_profit()?0.0:priceEntity.getFraction_of_profit());
 		}
 		
 		String[] labelsArr = new String[labelsList.size()];

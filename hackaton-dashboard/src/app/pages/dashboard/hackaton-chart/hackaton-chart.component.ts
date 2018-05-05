@@ -24,7 +24,7 @@ export class HackatonChartComponent implements OnDestroy {
   // Business Indicators
   btotrev=0;
   bprou=0;
-  boptmar=0;
+  bfracprof=0;
 
   datapoints = [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()];
   labels = ['January', 'February', 'March', 'April', 'May', 'June'];
@@ -64,16 +64,16 @@ export class HackatonChartComponent implements OnDestroy {
           borderDash: [5, 5],
           pointRadius: 8,
           pointHoverRadius: 10,
-        }/*, {
+        }, {
           label: 'dataset - individual point sizes',
           data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
           borderColor: colors.dangerLight,
           backgroundColor: colors.dangerLight,
-          fill: false,
+          fill: true,
           borderDash: [5, 5],
-          pointRadius: 8,
+          pointRadius: 0,
           pointHoverRadius: 10,
-        }, {
+        }/*, {
           label: 'dataset - large pointHoverRadius',
           data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
           borderColor: colors.info,
@@ -149,6 +149,12 @@ export class HackatonChartComponent implements OnDestroy {
       (dataload :any)=> {
         this.labels=dataload.labels;
         this.datapoints=dataload.data;
+
+        this.btotrev= dataload.total_revenue;
+        this.bprou= dataload.profit_per_unit;
+        this.bfracprof= dataload.fraction_of_profit;
+
+        
           console.log(dataload);
           this.createChart();
      
