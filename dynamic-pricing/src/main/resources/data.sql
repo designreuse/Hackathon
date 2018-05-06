@@ -1,4 +1,4 @@
-insert into price_entity(id, price, updated, fraction_of_profit, profit_per_unit, total_revenue) values (1, 368, parsedatetime('05-05-2018 19:23:52', 'dd-MM-yyyy hh:mm:ss'), 0.09250000000000018, 24.666666666666714, 40700.00000000001);
+insert into price_entity(id, price, updated, fraction_of_profit, profit_per_unit, total_revenue) values (1, 368.77, parsedatetime('05-05-2018 19:23:52', 'dd-MM-yyyy hh:mm:ss'), 0.0925, 24.66, 40700.00);
 
 INSERT INTO `competion` (`id`, `competion`, `price`, `updated`) VALUES (1, 'Amazon', 12, parsedatetime('2018-05-05 10:55:21', 'dd-MM-yyyy hh:mm:ss'));
 INSERT INTO `competion` (`id`, `competion`, `price`, `updated`) VALUES (2, 'Amazon', 12, parsedatetime('2018-05-01 06:00:00', 'dd-MM-yyyy hh:mm:ss'));

@@ -67,7 +67,7 @@ public class PriceCalcController {
     	
     	PriceEntityCompetitor am = new PriceEntityCompetitor();
     	am.setName("Amazon");
-    	am.setPrice(amazonPrice);
+    	am.setPrice(Math.round(amazonPrice * 100.0) / 100.0);
     	am.setUpdated(Test);
     	priceEntityCompetitorDao.save(am);
 
@@ -77,7 +77,7 @@ public class PriceCalcController {
     	
     	PriceEntityCompetitor al = new PriceEntityCompetitor();
     	al.setName("Alibaba");
-    	al.setPrice(alibabaPrice);
+    	al.setPrice(Math.round(alibabaPrice * 100.0) / 100.0);
     	al.setUpdated(Test);
     	priceEntityCompetitorDao.save(al);
     	
@@ -106,7 +106,7 @@ public class PriceCalcController {
     	
     	PriceEntityCompetitor un = new PriceEntityCompetitor();
     	un.setName("Adjusted");
-    	un.setPrice(adjustedPrice);
+    	un.setPrice(Math.round(adjustedPrice * 100.0) / 100.0);
     	un.setUpdated(Test);
     	priceEntityCompetitorDao.save(un);
     }
@@ -124,13 +124,13 @@ public class PriceCalcController {
     	
     	PriceEntity pe = new PriceEntity();
     	
-    	pe.setPrice(priceVariables.getPrice());
+    	pe.setPrice(Math.round(priceVariables.getPrice() * 100.0) / 100.0);
     	Test = new Date();
     	pe.setUpdated(Test);
     	
-    	pe.setProfit_per_unit(priceVariables.getProfit_per_unit());
-    	pe.setTotal_revenue(priceVariables.getTotal_revenue());
-    	pe.setFraction_of_profit(priceVariables.getFraction_of_profit());
+    	pe.setProfit_per_unit(Math.round(priceVariables.getProfit_per_unit() * 100.0) / 100.0);
+    	pe.setTotal_revenue(Math.round(priceVariables.getTotal_revenue() * 100.0) / 100.0);
+    	pe.setFraction_of_profit(Math.round(priceVariables.getFraction_of_profit() * 1000.0) / 1000.0);
     	
     	priceDao.save(pe);	
     	
