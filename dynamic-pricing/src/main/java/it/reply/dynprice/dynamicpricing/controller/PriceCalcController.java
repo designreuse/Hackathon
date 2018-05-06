@@ -1,13 +1,14 @@
 package it.reply.dynprice.dynamicpricing.controller;
 
 import java.util.Date;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.reply.dynprice.dynamicpricing.easynotes.repository.PriceEntityCompetitorDao;
 import it.reply.dynprice.dynamicpricing.persistence.dao.PriceDao;
 import it.reply.dynprice.dynamicpricing.persistence.model.PriceEntity;
+import it.reply.dynprice.dynamicpricing.persistence.model.PriceEntityCompetitor;
 import it.reply.dynprice.dynamicpricing.persistence.model.PriceVariables;
 
 
@@ -17,6 +18,9 @@ public class PriceCalcController {
     
     @Autowired
     PriceDao priceDao;
+    
+    @Autowired
+    PriceEntityCompetitorDao priceEntityCompetitorDao;
 
     Date Test;
     
@@ -53,24 +57,58 @@ public class PriceCalcController {
     }
     
     public void calc_Comp(PriceVariables amazon, PriceVariables alibaba, PriceVariables unieuro) {
-    	amazon.setPrice(amazon.getPrice()*(0.95 + Math.random() * 0.1));
-    	alibaba.setPrice(alibaba.getPrice()*(0.95 + Math.random() * 0.1));
-    	unieuro.setPrice(unieuro.getPrice()*(0.95 + Math.random() * 0.1));
+    	//amazon.setPrice(amazon.getPrice()*(0.975 + Math.random() * 0.05));
+    	//alibaba.setPrice(alibaba.getPrice()*(0.965 + Math.random() * 0.07));
+    	//unieuro.setPrice(unieuro.getPrice()*(0.95 + Math.random() * 0.1));
     	
-    	PriceEntity am = new PriceEntity();
-    	am.setPrice(amazon.getPrice());
+    	// double amazonPrice = alibaba.getPrice()*(0.975 + Math.random() * 0.05);
+    	
+    	double amazonPrice = 364*(0.975 + Math.random() * 0.05);
+    	
+    	PriceEntityCompetitor am = new PriceEntityCompetitor();
+    	am.setName("Amazon");
+    	am.setPrice(amazonPrice);
     	am.setUpdated(Test);
-    	priceDao.save(am);
+    	priceEntityCompetitorDao.save(am);
 
-    	PriceEntity al = new PriceEntity();
-    	al.setPrice(alibaba.getPrice());
-    	al.setUpdated(Test);
-    	priceDao.save(al);
+    	// double alibabaPrice = alibaba.getPrice()*(0.965 + Math.random() * 0.07);
     	
-    	PriceEntity un = new PriceEntity();
-    	un.setPrice(unieuro.getPrice());
+    	double alibabaPrice = 360*(0.965 + Math.random() * 0.07);
+    	
+    	PriceEntityCompetitor al = new PriceEntityCompetitor();
+    	al.setName("Alibaba");
+    	al.setPrice(alibabaPrice);
+    	al.setUpdated(Test);
+    	priceEntityCompetitorDao.save(al);
+    	
+
+    	double maxPrice = 400;
+    	double minPrice = amazon.getCosts_total_unit()*1.1;
+    	
+    	if (Math.max(alibabaPrice, amazonPrice) < maxPrice) {
+    		maxPrice = Math.max(alibabaPrice, amazonPrice);
+    	}
+    	
+    	if (Math.min(alibabaPrice, amazonPrice) > minPrice) {
+    		minPrice = Math.min(alibabaPrice, amazonPrice);
+    	}
+    	
+    	if (amazon.getPrice() * 1.025 < maxPrice) {
+    		maxPrice = amazon.getPrice() * 1.025;
+    	}
+    	
+    	if (amazon.getPrice() * 0.975 > minPrice) {
+    		minPrice = amazon.getPrice() * 0.975;
+    	}
+    	
+    	double adjustedPrice = (minPrice + maxPrice) / 2; //Math.random()*(maxPrice-minPrice)+minPrice;
+    	
+    	
+    	PriceEntityCompetitor un = new PriceEntityCompetitor();
+    	un.setName("Adjusted");
+    	un.setPrice(adjustedPrice);
     	un.setUpdated(Test);
-    	priceDao.save(un);
+    	priceEntityCompetitorDao.save(un);
     }
     
     
@@ -95,6 +133,8 @@ public class PriceCalcController {
     	pe.setFraction_of_profit(priceVariables.getFraction_of_profit());
     	
     	priceDao.save(pe);	
+    	
+    	this.calc_Comp(priceVariables, priceVariables, priceVariables);
     }
     
 }

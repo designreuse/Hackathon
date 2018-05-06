@@ -7,7 +7,7 @@ public class ChartData {
 	
 	private Double[] amazon;
 	private Double[] alibaba;
-	private Double[] unieuro;
+	private Double[] adjusted;
 	
     private double total_revenue;			// Business Indicator										(calculated: qnt_prod * price)
     private double profit_per_unit;			// Business Indicator										(calculated: price - costs_total_unit)
@@ -55,11 +55,11 @@ public class ChartData {
 	public void setAlibaba(Double[] alibaba) {
 		this.alibaba = alibaba;
 	}
-	public Double[] getUnieuro() {
-		return unieuro;
+	public Double[] getAdjusted() {
+		return adjusted;
 	}
-	public void setUnieuro(Double[] unieuro) {
-		this.unieuro = unieuro;
+	public void setAdjusted(Double[] adjusted) {
+		this.adjusted = adjusted;
 	}
 	
 	

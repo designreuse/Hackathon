@@ -29,6 +29,10 @@ export class HackatonChartComponent implements OnDestroy {
   datapoints = [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()];
   labels = ['January', 'February', 'March', 'April', 'May', 'June'];
 
+  amazon;
+  alibaba;
+  adjusted;
+
   constructor(private theme: NbThemeService, private chartService:ChartService) {
     
 
@@ -64,32 +68,32 @@ export class HackatonChartComponent implements OnDestroy {
           borderDash: [5, 5],
           pointRadius: 8,
           pointHoverRadius: 10,
-        }/*, {
-          label: 'dataset - individual point sizes',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
+        }, {
+          label: 'Amazon price',
+          data: this.amazon,
           borderColor: colors.dangerLight,
           backgroundColor: colors.dangerLight,
-          fill: true,
+          fill: false,
           borderDash: [5, 5],
-          pointRadius: 0,
+          pointRadius: 8,
           pointHoverRadius: 10,
         }, {
-          label: 'dataset - large pointHoverRadius',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
+          label: 'Alibaba price',
+          data: this.alibaba,
           borderColor: colors.info,
           backgroundColor: colors.info,
           fill: false,
           pointRadius: 8,
           pointHoverRadius: 10,
         }, {
-          label: 'dataset - large pointHitRadius',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
+          label: 'Suggested price - Competitor',
+          data: this.adjusted,
           borderColor: colors.success,
           backgroundColor: colors.success,
           fill: false,
           pointRadius: 8,
           pointHoverRadius: 10,
-        }*/],
+        }],
       };
 
       this.options = {
@@ -149,6 +153,10 @@ export class HackatonChartComponent implements OnDestroy {
       (dataload :any)=> {
         this.labels=dataload.labels;
         this.datapoints=dataload.data;
+
+        this.alibaba=dataload.alibaba;
+        this.amazon=dataload.amazon;
+        this.adjusted=dataload.adjusted;
 
         this.btotrev= dataload.total_revenue;
         this.bprou= dataload.profit_per_unit;
